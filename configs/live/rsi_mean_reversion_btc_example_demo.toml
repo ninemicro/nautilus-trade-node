@@ -1,0 +1,26 @@
+[okx]
+api_key = "*********-*********-*********"
+api_secret = "***************************"
+api_passphrase = "******************"
+environment = "DEMO"
+instrument_types = ["SPOT"]
+contract_types = ["LINEAR"]
+proxy_url = "http://127.0.0.1:7897"
+
+[[strategies]]
+strategy_path = "strategies.rsi_mean_reversion:RsiMeanReversion"
+config_path = "strategies.rsi_mean_reversion:RsiMeanReversionConfig"
+
+[strategies.config]
+instrument_id = "BTC-USDT.OKX"
+base_currency = "BTC"
+quote_currency = "USDT"
+venue = "OKX"
+bar_type = "BTC-USDT.OKX-1-SECOND-LAST-EXTERNAL"
+max_position_ratio = 1.0
+enable_redis = false
+
+[analysis]
+output_path = "./reports"
+file_prefix = "rsi_mean_reversion_btc_live"
+venues = ["OKX"]
