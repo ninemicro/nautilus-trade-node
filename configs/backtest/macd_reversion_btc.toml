@@ -1,0 +1,33 @@
+[[venues]]
+name = "BINANCE"
+oms_type = "NETTING"
+account_type = "MARGIN"
+base_currency = "USDT"
+starting_balances = ["1_000_000 USDT"]
+
+[[data]]
+catalog_path = "./data/BTCUSDT.BINANCE/catalog"
+data_cls = "Klines"
+instrument_id = "BTCUSDT.BINANCE"
+start_time = "2025-01-01T00:00:00"
+end_time = "2025-03-01T00:00:00"
+
+[[strategies]]
+strategy_path = "strategies.macd_reversion:MacdReversion"
+config_path = "strategies.macd_reversion:MacdReversionConfig"
+
+[strategies.config]
+instrument_id = "BTCUSDT.BINANCE"
+base_currency = "BTC"
+quote_currency = "USDT"
+venue = "BINANCE"
+bar_type = "BTCUSDT.BINANCE-1-HOUR-LAST-INTERNAL@1-MINUTE-EXTERNAL"
+#bar_type = "BTCUSDT.BINANCE-1-MINUTE-LAST-EXTERNAL"
+max_position_ratio = 1.0
+enable_redis = true
+max_period = 100000
+
+[analysis]
+output_path = "./reports"
+file_prefix = "macd_btc_backtest"
+venues = ["BINANCE"]
